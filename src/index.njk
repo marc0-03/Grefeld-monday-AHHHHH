@@ -3,3 +3,67 @@ layout: base.njk
 title: Hello World
 ---
 
+{{ github | dump}}
+<h1>{{github.login}} Joined {{github.created_at}}</h1>
+    <img src="{{github.avatar_url}}" alt="{{github.login}}">
+<div class="spinner-border" role="status">
+    <div class="spinner-border" role="status">
+        <div class="spinner-border" role="status">
+            <div class="spinner-border" role="status">
+                <div class="spinner-border" role="status">
+                    <div class="spinner-border" role="status">
+                        <div class="spinner-border" role="status">
+                            <div class="spinner-border" role="status">
+                                <div class="spinner-border" role="status">
+    <div class="spinner-border" role="status">
+        <div class="spinner-border" role="status">
+            <div class="spinner-border" role="status">
+                <div class="spinner-border" role="status">
+                    <div class="spinner-border" role="status">
+                        <div class="spinner-border" style="width: 3rem; height: 3rem;"  role="status">
+                            <div class="spinner-border" style="width: 8rem; height: 8rem;" role="status">
+                                </div>
+    </div>
+    </div>
+</div>
+    </div>
+    </div>
+    </div>
+</div>
+    
+    </div>
+    </div>
+    </div>
+</div>
+    </div>
+    </div>
+    </div>
+</div>
+
+<h2>Repostitories</h2>
+<div id="repos">
+    <Button>Fetch</Button>
+    <div class="spinner-border d-none" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+</div>
+<script>
+    // https://api.github.com/users/marc0-03/repos
+    const button = document.querySelector('#repos > button');
+    const spinner = document.querySelector('#repos > .spinner-border')
+    button.addEventListener('click', (e) => {
+        console.log(e);
+        spinner.classList.toggle('d-none');
+        fetch('https://api.github.com/users/marc0-03/repos')
+        .then(response => response.json())
+        .then(data => {
+            spinner.classList.toggle('d-none');
+            const repos = document.querySelector('#repos');
+            data.forEach(repo => {
+                const p = document.createElement('p');
+                p.textContent = repo.name;
+                repos.appendChild(p);
+            });
+        });
+    });
+</script>
